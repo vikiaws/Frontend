@@ -1,0 +1,78 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Contact Us</div>
+  <div class="page__content shadow  position-relative ">
+    <div class="page__content-data position-absolute justify-content-center align-items-center">
+
+
+      <!---------------------------Contact Section Form--------------------------------->
+
+      <div class=" d-flex flex-row flex-wrap " style=" box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; ">
+        <form [formGroup]="contactform" (ngSubmit)="send(contactform.value)" class="box">
+          <div class="form-group col-12 mb-3">
+            <label for="name" class="block mb-3" class="defaultText">Name <span class="highlight">*</span> </label>
+            <input formControlName="name" id="name" type="text" pInputText class=" form-control" placeholder=""
+              required>
+              <div *ngIf="contactform.get('name').invalid && contactform.get('name').touched" class="error-message text-danger1 ">
+                This Field is Required
+              </div>
+          </div>
+          <div class="form-group col-12 mb-3">
+            <label for="email" class="block mb-3" class="defaultText">Email <span class="highlight">*</span> </label>
+            <input formControlName="email" id="email" type="text" pInputText class=" form-control" placeholder=""
+              required>
+              <div *ngIf="contactform.get('email').invalid && contactform.get('email').touched" class="error-message text-danger1 ">
+                <div *ngIf="contactform.get('email').errors.required">
+                  This Field is Required
+                </div>
+                <div *ngIf="contactform.get('email').errors.email">
+                  Invalid Mail
+                </div>
+                
+              </div>
+          </div>
+          <div class="form-group col-12 mb-3">
+            <label for="message" class="block mb-3" class="defaultText">Message<span class="highlight">*</span> </label>
+            <textarea type="input" formControlName="message" id="message" name="message" required
+              class=" form-control commentsSize"></textarea>
+              <div *ngIf="contactform.get('message').invalid && contactform.get('message').touched" class="error-message text-danger1 ">
+                This Field is Required
+              </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-secondary align-items-center justify-content-center sendButton" [disabled]="!contactform.valid ">Send</button>
+          </div>
+        </form>
+      </div>
+
+  <!--------------------------Footer Section---------------------------->
+      <div class=" footerBox p-3">
+        <section class="mb-2 d-flex align-items-center justify-content-center">
+          <a mdbRipple class="btn btn-outline-light btn-floating m-1 pButton" href="#!" role="button">
+            <i class="fa fa-google" aria-hidden="true"></i>
+          </a>
+         <a mdbRipple class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-instagram"
+              aria-hidden="true"></i>
+          </a>
+         <a mdbRipple class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-linkedin"
+              aria-hidden="true"></i>
+          </a>
+         <a mdbRipple class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-twitter"
+              aria-hidden="true"></i>
+          </a>
+        </section>
+        <div class="d-flex justify-content-center align-items-center flex-column">
+          <div>
+          <p class="text1">Point of Contacts </p>
+        </div>
+        <div>
+          <p class="text2">
+            <a class="text3">info@prodapt.com</a>
+
+            <a class="text3" >abcd@prodapt.com</a>
+          </p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,170 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Dashboard</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute">
+      <div>
+        <div class="card m-2 p-1 " style="border-radius:5px ">
+          <ng-container *ngIf="details.length>0">
+            <p-table responsiveLayout="scroll" #dt1 [value]="details" [paginator]="true" [rows]="5"
+              [showCurrentPageReport]="true"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+              [rowsPerPageOptions]="[5,10,15]"
+              [globalFilterFields]="['beeLine_Request_Number','job_description','priority','no_of_positions','cv_DeadLine','hours_per_week','status','beeline.length','date_request']">
+
+              <ng-template pTemplate="caption">
+                <div class="flex">
+                  <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"
+                    style="margin:4px;"></button>
+                  <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="filterValue(dt1,$event)" placeholder="Search keyword"
+                      style="margin:4px; align-self:right;" id="searchText" />
+                  </span>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width:8rem" pSortableColumn="beeLine_Request_Number" scope="col">
+                    <div class="flex justify-content-between align-items-center">
+                      BeeLine Request No
+                      <p-sortIcon field="beeLine_Request_Number"></p-sortIcon>
+                    </div>
+                  </th>
+                  <th style="width:8rem" pSortableColumn="job_description" scope="col">
+                    <div class="flex justify-content-between align-items-center">
+                      Job Description
+                      <p-sortIcon field="job_description"></p-sortIcon>
+                    </div>
+                  </th>
+                  <th style="width:7rem" pSortableColumn="no_of_positions" scope="col">
+                    <div class="flex justify-content-between align-items-center">
+                      No of positions
+                      <p-sortIcon field="no_of_positions"></p-sortIcon>
+                    </div>
+                  </th>
+                  <th style="width:6rem" pSortableColumn="priority" scope="col">
+                    <div class="flex justify-content-between align-items-center">
+                      Priority
+                      <p-sortIcon field="priority"></p-sortIcon>
+                    </div>
+                  </th>
+                  <th style="width:8rem" pSortableColumn="cv_DeadLine" scope="col">
+                    <div class="flex justify-content-between align-items-center">
+                      CV Deadline
+                      <p-sortIcon field="cv_DeadLine"></p-sortIcon>
+                    </div>
+                  </th>
+                  <th style="width:6rem" pSortableColumn="hours_per_week" scope="col">
+                    <div class="flex justify-content-between align-items-center">
+                      No of Working Hours
+                      <p-sortIcon field="hours_per_week"></p-sortIcon>
+                    </div>
+                  </th>
+                  <th style="width:8rem" pSortableColumn="current_Status" scope="col">
+                    <div class="flex justify-content-between align-items-center">
+                      Beeline Status
+                      <p-sortIcon field="current_Status"></p-sortIcon>
+                    </div>
+                  </th>
+                  <th style="width:6rem" pSortableColumn="beeline.length" scope="col">
+                    <div class="flex justify-content-between align-items-center">
+                      Total Profiles
+                      <p-sortIcon field="beeline.length"></p-sortIcon>
+                    </div>
+                  </th>
+                  <th style="width:8rem" pSortableColumn="date_request" scope="col">
+                    <div class="flex justify-content-between align-items-center">
+                      Date of Request
+                      <p-sortIcon field="date_request"></p-sortIcon>
+                    </div>
+                  </th>
+                  <th colspan="2" style="width:6rem" *ngIf="user==='Admin'" scope="col">
+                    <div class=" align-items-center">
+                      Action
+                    </div>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-details>
+                <tr>
+                  <td>
+                    <div>
+                      <a class="hovering" (click)="navToDetailedStatus(details.id)">
+                        {{details.beeLine_Request_Number}}</a>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{details.job_description}}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{details.no_of_positions}}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{details.priority}}
+                    </div>
+                  </td>
+                  <td>
+                    {{details.cv_DeadLine}}
+                  </td>
+                  <td>
+                    <div>
+
+                      {{details.hours_per_week}}
+                    </div>
+                  </td>
+
+                  <td>
+                    <div>
+                      {{details.status}}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{details.beeline.length}}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{details.date_request}}
+                    </div>
+                  </td>
+
+                  <td *ngIf="user==='Admin'">
+                    <a style="color: #2832c2" class="hovering"
+                      (click)="navToAmend(details.id)"><mat-icon>edit</mat-icon></a>
+
+                  </td>
+                  <td *ngIf="user==='Admin'">
+                    <a style="color: #f01e2c; " class="hovering"
+                      (click)="cancelBeeline(details.id)"><mat-icon>delete</mat-icon></a>
+                  </td>
+                </tr>
+
+              </ng-template>
+
+
+            </p-table>
+          </ng-container>
+          <div *ngIf="cancelDialog" class="formwrapper1 d-flex justify-content-center align-items-center">
+            <div class="profileForm1 ">
+              <h1 mat-dialog-title style="font-size:44px; color:#f01e2c" class="text-center">ⓘ</h1>
+              <h2 mat-dialog-content class="text-center" style="font-weight:400">
+                Are you sure you want to Delete this Beeline ?</h2>
+
+              <div class="text-center">
+                <button (click)="navtoDashboard()" class="btn btn-primary" style="margin:4px; ">Cancel</button>
+                <button class="btn btn-danger" style="margin:4px; "
+                  (click)="navToCancel(this.beelineId)">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

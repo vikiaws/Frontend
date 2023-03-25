@@ -1,0 +1,133 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Edit Beeline Request</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute">
+      <form *ngIf="orderStatus">
+        <div class="container-fluid d-flex flex-row flex-wrap justify-content-center align-items-center ">
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3 ">
+            <label for="beeLine_Request_Number" class="labelHeight">BeeLine Request Number </label>
+            <input type="text" id="beeLine_Request_Number" class="form-control" (blur)="captureInput($event)"
+              value="{{orderStatus.beeLine_Request_Number}}">
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="job_description" class="labelHeight">Job Description </label>
+            <input type="text" id="job_description" class="form-control" (blur)="captureInput($event)"
+              value="{{orderStatus.job_description}}">
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="department" class="labelHeight">Department</label>
+            <input type="text" id="department" class="form-control" (blur)="captureInput($event)"
+              value="{{orderStatus.department}}">
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="no_of_positions" class="labelHeight">No of positions </label>
+            <input type="number" id="no_of_positions" class="form-control" (blur)="captureInput($event)"
+              value="{{orderStatus.no_of_positions}}">
+          </div>
+          <div class=" col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="priority" class="labelHeight">Priority </label>
+            <p-dropdown [options]="priorityList" optionLabel="name" [showClear]="true" autoWidth="false"
+              [style]="{'width':'100%'}" (onChange)="captureDropdownValue($event,'priority','name')"
+              dataKey="{{orderStatus.priority}}"> </p-dropdown>
+          </div>
+
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="cv_DeadLine" class="labelHeight">CV Deadline </label>
+            <input type="date" id="cv_DeadLine" class="form-control" value="{{orderStatus.cv_DeadLine}}"
+              (blur)="captureInput($event)">
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="status" class="labelHeight">Beeline Status </label>
+            <p-dropdown [options]="status" optionLabel="name" [showClear]="true" autoWidth="false"
+              [style]="{'width':'100%'}" (onChange)="captureDropdownValue($event,'status','name')"
+              dataKey="{{orderStatus.status}}"></p-dropdown>
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="billing_Rate" class="labelHeight">Billing rate range(Per hour) </label>
+            <input type="text" id="billing_Rate" class="form-control" value="{{orderStatus.billing_Rate}}"
+              (blur)="captureInput($event)">
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="hours_per_week" class="labelHeight">Hours per week </label>
+            <input type="number" id="hours_per_week" class="form-control" value="{{orderStatus.hours_per_week}}"
+              (blur)="captureInput($event)">
+          </div>
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="contact_person" class="labelHeight">Contact Person TAC </label>
+            <input type="text" id="contact_person" class="form-control" value="{{orderStatus.contact_person}}"
+              (blur)="captureInput($event)">
+          </div>
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="prodapt_practice" class="labelHeight">Prodapt Practice </label>
+            <input type="text" id="prodapt_practice" class="form-control " value="{{orderStatus.prodapt_practice}}"
+              (blur)="captureInput($event)">
+
+          </div>
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="prodapt_POC" class="labelHeight">Prodapt POC</label>
+            <input type="text" id="prodapt_POC" class="form-control " value="{{orderStatus.prodapt_POC}}"
+              (blur)="captureInput($event)">
+          </div>
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="dutch_Language" class="labelHeight">Dutch Language </label>
+            <input type="text" id="dutch_Language" class="form-control " value="{{orderStatus.dutch_Language}}"
+              (blur)="captureInput($event)">
+          </div>
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="location" class="labelHeight">Location </label>
+            <input type="text" id="location" class="form-control " value="{{orderStatus.location}}"
+              (blur)="captureInput($event)">
+          </div>
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="key_skills" class="labelHeight">Key Skills </label>
+            <textarea type="input" id="key_skills" value="{{orderStatus.key_skills}}" class="form-control  "
+              (blur)="captureInput($event)"></textarea>
+          </div>
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="date_request" class="labelHeight">Date of request </label>
+            <input type="date" id="date_request" class="form-control" value="{{orderStatus.date_request}}"
+              (blur)="captureInput($event)">
+          </div>
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3" *ngIf="orderStatus.file!=default">
+            <div *ngIf="beforeJd">
+              <label for="file" class="labelHeight">JD Upload</label>
+              <div class="d-flex flex-row">
+                <div class="anchor">
+                  <a href="{{orderStatus.file}}" target="_blank" rel="noopener" style="float:center"> View JD</a>
+                </div>
+                <div class="anchor1">
+                  <a style="float:center" (click)="changeJD()">Remove JD </a>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="afterJd">
+              <label for="file" class="labelHeight">JD Upload</label>
+              <input type="file" id="file" class="form-control " (change)="onFileSelected($event)">
+            </div>
+          </div>
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 " *ngIf="orderStatus.file==default">
+            <label for="file" class="labelHeight">JD Upload</label>
+            <input type="file" id="file" class="form-control " (change)="onFileSelected($event)">
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+          </div>
+          <div class="col-12 col-md-5 col-lg-4 col-xl-3 mt-4 m-3">
+            <button class="button" mat-button (click)="navToHome()">Cancel</button>
+          </div>
+          <div class="col-12 col-md-5 col-lg-4 col-xl-3 mt-4 m-3">
+            <button class="button" mat-button (click)="amendOrder(orderStatus.id)">Update Beeline</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="updateDialog" class="formwrapper1 d-flex justify-content-center align-items-center">
+      <div class="profileForm1 ">
+        <h1 mat-dialog-title style="font-size:44px; color:#f01e2c" class="text-center">ⓘ</h1>
+        <h2 mat-dialog-content class="text-center" style="font-weight:400">
+          Are you sure you want to Update the Job Description ?</h2>
+        <div class="text-center">
+          <button (click)="onClose()" class="btn btn-primary" style="margin:4px; ">Cancel</button>
+          <button class="btn btn-danger" style="margin:4px; " (click)="updateJD()">Confirm</button>
+        </div>
+      </div>
+    </div>

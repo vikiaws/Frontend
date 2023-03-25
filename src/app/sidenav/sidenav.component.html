@@ -1,0 +1,22 @@
+<mat-nav-list *ngIf="(user==='Admin')||(user==='User')">
+  <div class="logo py-4">
+    <img src="../assets/2.png" alt="Company Logo" />
+  </div>
+  <mat-divider></mat-divider>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
+    <mat-icon>home</mat-icon> Home
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/newjob" *ngIf="user==='Admin'">
+    <mat-icon>edit</mat-icon> Upload a New Request </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/registration" *ngIf="user==='Admin'">
+    <mat-icon>account_circle</mat-icon> Users </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/ResetPassword"
+    *ngIf="user==='User' || user==='Admin' "> <mat-icon>lock</mat-icon> Reset Password </a>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/contact" *ngIf="user==='User'">
+    <mat-icon>mail</mat-icon> Contact Us </a>
+
+</mat-nav-list>

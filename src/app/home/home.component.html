@@ -1,0 +1,445 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Home</div>
+  <div class="page__content shadow p-3 position-relative container-fluid">
+    <div class="page__content-data position-absolute">
+      <div class=" container-fluid justify-content-center align-items-center">
+        <div class="d-flex flex-row justify-content-center">
+          <div
+            style=" width:50vw; background-color:#ffffff; margin:1rem; padding:1rem; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; ">
+            <canvas id="MyChart" class="chart-base" chart-type="type"
+            chart-data="data" chart-labels="labels" chart-legend="true">{{ chart }}</canvas>
+          </div>
+
+        </div>
+        <div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Open Profiles Dialog -->
+  <div *ngIf="opencountButton" class="formwrapper d-flex justify-content-center align-items-center">
+    <div class="profileForm">
+      <p class=" text-center text-info" style=" font-size:20px; text-decoration: underline;">Profiles Under Beeline
+        status: "Open"</p>
+      <p style="font-size:16px;"><span style="float:right">Total Beelines Open:{{details1[0][7]}}</span><span
+          style="float:left">Total Profiles Shared :{{details1[0][0]}}</span></p>
+      <div>
+        <table>
+          <tr>
+            <th>Profile Status</th>
+            <th>SF Practice</th>
+            <th>CAD</th>
+            <th>NW Practice</th>
+            <th>Infra Practice</th>
+            <th>ASM Practice</th>
+            <th>COO-TOPS Practice</th>
+          </tr>
+          <tr>
+            <td>New</td>
+            <td>{{details1[0][1][0]}}</td>
+            <td>{{details1[0][2][0]}}</td>
+            <td>{{details1[0][3][0]}}</td>
+            <td>{{details1[0][4][0]}}</td>
+            <td>{{details1[0][5][0]}}</td>
+            <td>{{details1[0][6][0]}}</td>
+
+
+          </tr>
+          <tr>
+            <td>On hold</td>
+            <td>{{details1[0][1][1]}}</td>
+            <td>{{details1[0][2][1]}}</td>
+            <td>{{details1[0][3][1]}}</td>
+            <td>{{details1[0][4][1]}}</td>
+            <td>{{details1[0][5][1]}}</td>
+            <td>{{details1[0][6][1]}}</td>
+
+          </tr>
+          <tr>
+            <td>Profile Rejected </td>
+            <td>{{details1[0][1][2]}}</td>
+            <td>{{details1[0][2][2]}}</td>
+            <td>{{details1[0][3][2]}}</td>
+            <td>{{details1[0][4][2]}}</td>
+            <td>{{details1[0][5][2]}}</td>
+            <td>{{details1[0][6][2]}}</td>
+
+          </tr>
+          <tr>
+            <td>Closed</td>
+            <td>{{details1[0][1][3]}}</td>
+            <td>{{details1[0][2][3]}}</td>
+            <td>{{details1[0][3][3]}}</td>
+            <td>{{details1[0][4][3]}}</td>
+            <td>{{details1[0][5][3]}}</td>
+            <td>{{details1[0][6][3]}}</td>
+
+          </tr>
+          <tr>
+            <td>Profile Shared</td>
+            <td>{{details1[0][1][4]}}</td>
+            <td>{{details1[0][2][4]}}</td>
+            <td>{{details1[0][3][4]}}</td>
+            <td>{{details1[0][4][4]}}</td>
+            <td>{{details1[0][5][4]}}</td>
+            <td>{{details1[0][6][4]}}</td>
+
+          </tr>
+          <tr>
+            <td>POC Contacted</td>
+            <td>{{details1[0][1][5]}}</td>
+            <td>{{details1[0][2][5]}}</td>
+            <td>{{details1[0][3][5]}}</td>
+            <td>{{details1[0][4][5]}}</td>
+            <td>{{details1[0][5][5]}}</td>
+            <td>{{details1[0][6][5]}}</td>
+
+          </tr>
+          <tr>
+            <td>Pending Client Interview</td>
+            <td>{{details1[0][1][6]}}</td>
+            <td>{{details1[0][2][6]}}</td>
+            <td>{{details1[0][3][6]}}</td>
+            <td>{{details1[0][4][6]}}</td>
+            <td>{{details1[0][5][6]}}</td>
+            <td>{{details1[0][6][6]}}</td>
+
+          </tr>
+          <tr>
+            <td>Awaiting Interview Results</td>
+            <td>{{details1[0][1][7]}}</td>
+            <td>{{details1[0][2][7]}}</td>
+            <td>{{details1[0][3][7]}}</td>
+            <td>{{details1[0][4][7]}}</td>
+            <td>{{details1[0][5][7]}}</td>
+            <td>{{details1[0][6][7]}}</td>
+
+          </tr>
+        </table>
+      </div>
+      <div class="text-center">
+        <button (click)="navtoDashboard()" class="btn btn-primary" style="margin:4px; ">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FulFilled Dialog -->
+  <div *ngIf="fulfilledcountButton" class="formwrapper d-flex justify-content-center align-items-center">
+    <div class="profileForm">
+      <p class=" text-center text-info" style=" font-size:20px; text-decoration: underline;">Profiles Under Beeline
+        status: "Fulfilled"</p>
+      <p style="font-size:16px; margin:4px;"><span style="float:right">Total Beelines
+          Fulfilled:{{details2[1][7]}}</span><span style="float:left">Total Profiles Shared :{{details2[1][0]}}</span>
+      </p>
+      <table>
+        <tr>
+          <th>Profile Status</th>
+          <th>SF Practice</th>
+          <th>CAD</th>
+          <th>NW Practice</th>
+          <th>Infra Practice</th>
+          <th>ASM Practice</th>
+          <th>COO-TOPS Practice</th>
+        </tr>
+        <tr>
+          <td>New</td>
+          <td>{{details2[1][1][0]}}</td>
+          <td>{{details2[1][2][0]}}</td>
+          <td>{{details2[1][3][0]}}</td>
+          <td>{{details2[1][4][0]}}</td>
+          <td>{{details2[1][5][0]}}</td>
+          <td>{{details2[1][6][0]}}</td>
+
+
+        </tr>
+        <tr>
+          <td>On hold</td>
+          <td>{{details2[1][1][1]}}</td>
+          <td>{{details2[1][2][1]}}</td>
+          <td>{{details2[1][3][1]}}</td>
+          <td>{{details2[1][4][1]}}</td>
+          <td>{{details2[1][5][1]}}</td>
+          <td>{{details2[1][6][1]}}</td>
+
+        </tr>
+        <tr>
+          <td>Profile Rejected </td>
+          <td>{{details2[1][1][2]}}</td>
+          <td>{{details2[1][2][2]}}</td>
+          <td>{{details2[1][3][2]}}</td>
+          <td>{{details2[1][4][2]}}</td>
+          <td>{{details2[1][5][2]}}</td>
+          <td>{{details2[1][6][2]}}</td>
+
+        </tr>
+        <tr>
+          <td>Closed</td>
+          <td>{{details2[1][1][3]}}</td>
+          <td>{{details2[1][2][3]}}</td>
+          <td>{{details2[1][3][3]}}</td>
+          <td>{{details2[1][4][3]}}</td>
+          <td>{{details2[1][5][3]}}</td>
+          <td>{{details2[1][6][3]}}</td>
+
+        </tr>
+        <tr>
+          <td>Profile Shared</td>
+          <td>{{details2[1][1][4]}}</td>
+          <td>{{details2[1][2][4]}}</td>
+          <td>{{details2[1][3][4]}}</td>
+          <td>{{details2[1][4][4]}}</td>
+          <td>{{details2[1][5][4]}}</td>
+          <td>{{details2[1][6][4]}}</td>
+
+        </tr>
+        <tr>
+          <td>POC Contacted</td>
+          <td>{{details2[1][1][5]}}</td>
+          <td>{{details2[1][2][5]}}</td>
+          <td>{{details2[1][3][5]}}</td>
+          <td>{{details2[1][4][5]}}</td>
+          <td>{{details2[1][5][5]}}</td>
+          <td>{{details2[1][6][5]}}</td>
+
+        </tr>
+        <tr>
+          <td>Pending Client Interview</td>
+          <td>{{details2[1][1][6]}}</td>
+          <td>{{details2[1][2][6]}}</td>
+          <td>{{details2[1][3][6]}}</td>
+          <td>{{details2[1][4][6]}}</td>
+          <td>{{details2[1][5][6]}}</td>
+          <td>{{details2[1][6][6]}}</td>
+
+        </tr>
+        <tr>
+          <td>Awaiting Interview Results</td>
+          <td>{{details2[1][1][7]}}</td>
+          <td>{{details2[1][2][7]}}</td>
+          <td>{{details2[1][3][7]}}</td>
+          <td>{{details2[1][4][7]}}</td>
+          <td>{{details2[1][5][7]}}</td>
+          <td>{{details2[1][6][7]}}</td>
+
+        </tr>
+      </table>
+      <div class="text-center">
+        <button (click)="navtoDashboard1()" class="btn btn-primary" style="margin:4px; ">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lost Profiles Dialog -->
+  <div *ngIf="lostcountButton" class="formwrapper d-flex justify-content-center align-items-center">
+    <div class="profileForm">
+      <p class=" text-center text-info" style=" font-size:20px; text-decoration: underline;">Profiles Under Beeline
+        status: "Lost"</p>
+      <p style="font-size:16px; margin:4px;"><span style="float:right">Total Beelines
+          Lost:{{details3[3][7]}}</span><span style="float:left">Total Profiles Shared :{{details3[3][0]}}</span></p>
+      <table>
+        <tr>
+          <th>Profile Status</th>
+          <th>SF Practice</th>
+          <th>CAD</th>
+          <th>NW Practice</th>
+          <th>Infra Practice</th>
+          <th>ASM Practice</th>
+          <th>COO-TOPS Practice</th>
+        </tr>
+        <tr>
+          <td>New</td>
+          <td>{{details3[3][1][0]}}</td>
+          <td>{{details3[3][2][0]}}</td>
+          <td>{{details3[3][3][0]}}</td>
+          <td>{{details3[3][4][0]}}</td>
+          <td>{{details3[3][5][0]}}</td>
+          <td>{{details3[3][6][0]}}</td>
+
+
+        </tr>
+        <tr>
+          <td>On hold</td>
+          <td>{{details3[3][1][1]}}</td>
+          <td>{{details3[3][2][1]}}</td>
+          <td>{{details3[3][3][1]}}</td>
+          <td>{{details3[3][4][1]}}</td>
+          <td>{{details3[3][5][1]}}</td>
+          <td>{{details3[3][6][1]}}</td>
+
+        </tr>
+        <tr>
+          <td>Profile Rejected </td>
+          <td>{{details3[3][1][2]}}</td>
+          <td>{{details3[3][2][2]}}</td>
+          <td>{{details3[3][3][2]}}</td>
+          <td>{{details3[3][4][2]}}</td>
+          <td>{{details3[3][5][2]}}</td>
+          <td>{{details3[3][6][2]}}</td>
+
+        </tr>
+        <tr>
+          <td>Closed</td>
+          <td>{{details3[3][1][3]}}</td>
+          <td>{{details3[3][2][3]}}</td>
+          <td>{{details3[3][3][3]}}</td>
+          <td>{{details3[3][4][3]}}</td>
+          <td>{{details3[3][5][3]}}</td>
+          <td>{{details3[3][6][3]}}</td>
+
+        </tr>
+        <tr>
+          <td>Profile Shared</td>
+          <td>{{details3[3][1][4]}}</td>
+          <td>{{details3[3][2][4]}}</td>
+          <td>{{details3[3][3][4]}}</td>
+          <td>{{details3[3][4][4]}}</td>
+          <td>{{details3[3][5][4]}}</td>
+          <td>{{details3[3][6][4]}}</td>
+
+        </tr>
+        <tr>
+          <td>POC Contacted</td>
+          <td>{{details3[3][1][5]}}</td>
+          <td>{{details3[3][2][5]}}</td>
+          <td>{{details3[3][3][5]}}</td>
+          <td>{{details3[3][4][5]}}</td>
+          <td>{{details3[3][5][5]}}</td>
+          <td>{{details3[3][6][5]}}</td>
+
+        </tr>
+        <tr>
+          <td>Pending Client Interview</td>
+          <td>{{details3[3][1][6]}}</td>
+          <td>{{details3[3][2][6]}}</td>
+          <td>{{details3[3][3][6]}}</td>
+          <td>{{details3[3][4][6]}}</td>
+          <td>{{details3[3][5][6]}}</td>
+          <td>{{details3[3][6][6]}}</td>
+
+        </tr>
+        <tr>
+          <td>Awaiting Interview Results</td>
+          <td>{{details3[3][1][7]}}</td>
+          <td>{{details3[3][2][7]}}</td>
+          <td>{{details3[3][3][7]}}</td>
+          <td>{{details3[3][4][7]}}</td>
+          <td>{{details3[3][5][7]}}</td>
+          <td>{{details3[3][6][7]}}</td>
+
+        </tr>
+
+      </table>
+      <div class="text-center">
+        <button (click)="navtoDashboard2()" class="btn btn-primary" style="margin:4px; ">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Closed Profiles Dialog -->
+  <div *ngIf="closedcountButton" class="formwrapper d-flex justify-content-center align-items-center">
+    <div class="profileForm">
+      <p class=" text-center text-info" style=" font-size:20px; text-decoration: underline;">Profiles Under Beeline
+        status: "Closed"</p>
+      <p style="font-size:16px; margin:4px;" class="text-center"><span style="float:right">Total Beelines
+          Closed :{{details4[2][7]}}</span><span style="float:left">Total Profiles Shared :{{details4[2][0]}}</span></p>
+      <table>
+        <tr>
+          <th>Profile Status</th>
+          <th>SF Practice</th>
+          <th>CAD</th>
+          <th>NW Practice</th>
+          <th>Infra Practice</th>
+          <th>ASM Practice</th>
+          <th>COO-TOPS Practice</th>
+        </tr>
+        <tr>
+          <td>New</td>
+          <td>{{details4[2][1][0]}}</td>
+          <td>{{details4[2][2][0]}}</td>
+          <td>{{details4[2][3][0]}}</td>
+          <td>{{details4[2][4][0]}}</td>
+          <td>{{details4[2][5][0]}}</td>
+          <td>{{details4[2][6][0]}}</td>
+
+
+        </tr>
+        <tr>
+          <td>On hold</td>
+          <td>{{details4[2][1][1]}}</td>
+          <td>{{details4[2][2][1]}}</td>
+          <td>{{details4[2][3][1]}}</td>
+          <td>{{details4[2][4][1]}}</td>
+          <td>{{details4[2][5][1]}}</td>
+          <td>{{details4[2][6][1]}}</td>
+
+        </tr>
+        <tr>
+          <td>Profile Rejected </td>
+          <td>{{details4[2][1][2]}}</td>
+          <td>{{details4[2][2][2]}}</td>
+          <td>{{details4[2][3][2]}}</td>
+          <td>{{details4[2][4][2]}}</td>
+          <td>{{details4[2][5][2]}}</td>
+          <td>{{details4[2][6][2]}}</td>
+
+        </tr>
+        <tr>
+          <td>Closed</td>
+          <td>{{details4[2][1][3]}}</td>
+          <td>{{details4[2][2][3]}}</td>
+          <td>{{details4[2][3][3]}}</td>
+          <td>{{details4[2][4][3]}}</td>
+          <td>{{details4[2][5][3]}}</td>
+          <td>{{details4[2][6][3]}}</td>
+
+        </tr>
+        <tr>
+          <td>Profile Shared</td>
+          <td>{{details4[2][1][4]}}</td>
+          <td>{{details4[2][2][4]}}</td>
+          <td>{{details4[2][3][4]}}</td>
+          <td>{{details4[2][4][4]}}</td>
+          <td>{{details4[2][5][4]}}</td>
+          <td>{{details4[2][6][4]}}</td>
+
+        </tr>
+        <tr>
+          <td>POC Contacted</td>
+          <td>{{details4[2][1][5]}}</td>
+          <td>{{details4[2][2][5]}}</td>
+          <td>{{details4[2][3][5]}}</td>
+          <td>{{details4[2][4][5]}}</td>
+          <td>{{details4[2][5][5]}}</td>
+          <td>{{details4[2][6][5]}}</td>
+
+        </tr>
+        <tr>
+          <td>Pending Client Interview</td>
+          <td>{{details4[2][1][6]}}</td>
+          <td>{{details4[2][2][6]}}</td>
+          <td>{{details4[2][3][6]}}</td>
+          <td>{{details4[2][4][6]}}</td>
+          <td>{{details4[2][5][6]}}</td>
+          <td>{{details4[2][6][6]}}</td>
+
+        </tr>
+        <tr>
+          <td>Awaiting Interview Results</td>
+          <td>{{details4[2][1][7]}}</td>
+          <td>{{details4[2][2][7]}}</td>
+          <td>{{details4[2][3][7]}}</td>
+          <td>{{details4[2][4][7]}}</td>
+          <td>{{details4[2][5][7]}}</td>
+          <td>{{details4[2][6][7]}}</td>
+
+        </tr>
+
+      </table>
+      <div class="text-center">
+        <button (click)="navtoDashboard3()" class="btn btn-primary" style="margin:4px; ">Close</button>
+      </div>
+    </div>
+  </div>

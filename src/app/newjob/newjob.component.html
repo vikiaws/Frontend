@@ -1,0 +1,238 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">New Job Upload</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute ">
+      <div>
+        <h1 style="color:red; font-size:16px;">Note : * Mandatory Fields</h1>
+      </div>
+      <form [formGroup]="newJobForm" (ngSubmit)="onSubmit(newJobForm.value)">
+        <div class="container-fluid d-flex flex-row flex-wrap justify-content-center align-items-center ">
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3 ">
+            <label for="beeLine_Request_Number" class="labelHeight">BeeLine Request Number <span
+                style="color:red">*</span></label>
+            <input type="text" id="beeLine_Request_Number" formControlName="beeLine_Request_Number" class="form-control"
+              maxlength="15" required>
+            <div
+              *ngIf="newJobForm.controls['beeLine_Request_Number'].invalid && (newJobForm.controls['beeLine_Request_Number'].touched)"
+              class=" text-danger1">
+              <div *ngIf="newJobForm.controls['beeLine_Request_Number'].errors?.['required']">
+                This Field is required.
+              </div>
+              <div *ngIf="newJobForm.controls['beeLine_Request_Number'].errors?.['minlength']">
+                Minimum 6 characters Required
+              </div>
+
+            </div>
+
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="job_description" class="labelHeight">Job Description <span style="color:red">*</span></label>
+            <input type="text" id="job_description" formControlName="job_description" required class="form-control">
+            <div
+              *ngIf="newJobForm.controls['job_description'].invalid && (newJobForm.controls['job_description'].touched)"
+              class=" text-danger1">
+              <div *ngIf="newJobForm.controls['job_description'].errors?.['required']">
+                This Field is required.
+              </div>
+              <div *ngIf="newJobForm.controls['job_description'].errors?.['minlength']">
+                Minimum 6 characters Required
+              </div>
+              <div *ngIf="newJobForm.controls['job_description'].errors?.['maxlength']">
+                Maximum 30 characters Required
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="department" class="labelHeight">Department<span style="color:red">*</span></label>
+            <input type="text" id="department" formControlName="department" class="form-control">
+            <div *ngIf="newJobForm.controls['department'].invalid && (newJobForm.controls['department'].touched)"
+              class=" text-danger1">
+              <div *ngIf="newJobForm.controls['department'].errors?.['required']">
+                This Field is required.
+              </div>
+
+            </div>
+
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="" class="labelHeight">No of positions <span style="color:red">*</span></label>
+            <input type="number" id="no_of_positions" formControlName="no_of_positions" class="form-control" required
+              min="1">
+            <div
+              *ngIf="newJobForm.controls['no_of_positions'].invalid && (newJobForm.controls['no_of_positions'].touched)"
+              class=" text-danger1 ">
+              <div *ngIf="newJobForm.controls['no_of_positions'].errors?.['required']">
+                This Field is required.
+              </div>
+
+            </div>
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="priority" class="labelHeight">Priority <span style="color:red">*</span></label>
+
+            <select id="priority" formControlName="priority" name="priority" class="form-control form-select">
+              <option *ngFor="let each of priorityList" value={{each}}>{{each}}</option>
+            </select>
+            <div *ngIf="newJobForm.controls['priority'].invalid && (newJobForm.controls['priority'].touched)"
+              class=" text-danger1">
+              <div *ngIf="newJobForm.controls['priority'].errors?.['required']">
+                This Field is required.
+              </div>
+
+            </div>
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="cv_DeadLine" class="labelHeight">CV Deadline <span style="color:red">*</span></label>
+            <input type="date" id="cv_DeadLine" formControlName="cv_DeadLine" class="form-control" required>
+            <div *ngIf="newJobForm.controls['cv_DeadLine'].invalid && (newJobForm.controls['cv_DeadLine'].touched)"
+              class=" text-danger1 ">
+              <div *ngIf="newJobForm.controls['cv_DeadLine'].errors?.['required']">
+                This Field is required.
+              </div>
+
+            </div>
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="status" class="labelHeight">Beeline Status <span style="color:red">*</span></label>
+            <select id="status" formControlName="status" name="status" class="form-control form-select">
+              <option *ngFor="let each of CurrentList" value={{each}}>{{each}}</option>
+            </select>
+            <div *ngIf="newJobForm.controls['status'].invalid && (newJobForm.controls['status'].touched)"
+              class=" text-danger1">
+              <div *ngIf="newJobForm.controls['status'].errors?.['required']">
+                This Field is required.
+              </div>
+
+            </div>
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="billing_Rate" class="labelHeight">Billing rate range(Per hour) <span
+                style="color:red">*</span></label>
+            <input type="text" id="billing_Rate" formControlName="billing_Rate" class="form-control" required
+              placeholder="Ex: €40-80€">
+            <div *ngIf="newJobForm.controls['billing_Rate'].invalid && (newJobForm.controls['billing_Rate'].touched)"
+              class=" text-danger1">
+              <div *ngIf="newJobForm.controls['billing_Rate'].errors?.['required']">
+                This Field is required.
+              </div>
+
+            </div>
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="hours_per_week" class="labelHeight">Hours per week <span style="color:red">*</span></label>
+            <input type="number" id="hours_per_week" formControlName="hours_per_week" class="form-control" required
+              min="1">
+            <div
+              *ngIf="newJobForm.controls['hours_per_week'].invalid && (newJobForm.controls['hours_per_week'].touched)"
+              class=" text-danger1">
+              <div *ngIf="newJobForm.controls['hours_per_week'].errors?.['required']">
+                This Field is required.
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="contact_person" class="labelHeight">Contact Person TAC <span style="color:red">*</span></label>
+            <input type="text" id="contact_person" formControlName="contact_person" class="form-control" required>
+            <div
+              *ngIf="newJobForm.controls['contact_person'].invalid && (newJobForm.controls['contact_person'].touched)"
+              class=" text-danger1">
+              <div *ngIf="newJobForm.controls['contact_person'].errors?.['required']">
+                This Field is required.
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="prodapt_practice" class="labelHeight">Prodapt Practice <span style="color:red">*</span></label>
+            <select id="prodapt_practice" formControlName="prodapt_practice" name="prodapt_practice"
+              class="form-control form-select">
+              <option *ngFor="let each of practiceList" value={{each}}>{{each}}</option>
+            </select>
+            <div
+              *ngIf="newJobForm.controls['prodapt_practice'].invalid && (newJobForm.controls['prodapt_practice'].touched)"
+              class=" text-danger1">
+              <div *ngIf="newJobForm.controls['prodapt_practice'].errors?.['required']">
+                This Field is required.
+              </div>
+
+            </div>
+          </div>
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="prodapt_POC" class="labelHeight">Prodapt POC<span style="color:red">*</span></label>
+            <select id="prodapt_POC" formControlName="prodapt_POC" name="prodapt_POC" class="form-control form-select">
+              <option *ngFor="let each of PocList" value={{each}}>{{each}}</option>
+            </select>
+            <div *ngIf="newJobForm.controls['prodapt_POC'].invalid && (newJobForm.controls['prodapt_POC'].touched)"
+              class=" text-danger1">
+              <div *ngIf="newJobForm.controls['prodapt_POC'].errors?.['required']">
+                This Field is required.
+              </div>
+
+            </div>
+          </div>
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="dutch_Language" class="labelHeight">Dutch Language <span style="color:red">*</span></label>
+            <select id="dutch_Language" formControlName="dutch_Language" name="dutch_Language"
+              class="form-control form-select">
+              <option *ngFor="let each of dutchList" value={{each}}>{{each}}</option>
+            </select>
+            <div
+              *ngIf="newJobForm.controls['dutch_Language'].invalid && (newJobForm.controls['dutch_Language'].touched)"
+              class=" text-danger1">
+              <div *ngIf="newJobForm.controls['dutch_Language'].errors?.['required']">
+                This Field is required.
+              </div>
+
+            </div>
+          </div>
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="location" class="labelHeight">Location <span style="color:red">*</span></label>
+            <select id="location" formControlName="location" name="location" class="form-control form-select">
+              <option *ngFor="let each of location" value={{each}}>{{each}}</option>
+            </select>
+            <div *ngIf="newJobForm.controls['location'].invalid && (newJobForm.controls['location'].touched)"
+              class=" text-danger1">
+              <div *ngIf="newJobForm.controls['location'].errors?.['required']">
+                This Field is required.
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="date_request" class="labelHeight">Date of request <span style="color:red">*</span></label>
+            <input type="date" id="date_request" formControlName="date_request" class="form-control" required>
+            <div *ngIf="newJobForm.controls['date_request'].invalid && (newJobForm.controls['date_request'].touched)"
+              class=" text-danger1">
+              <div *ngIf="newJobForm.controls['date_request'].errors?.['required']">
+                This Field is required.
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 ">
+            <label for="jd_Upload" class="labelHeight">JD Upload<span style="color:red">*</span></label>
+            <input type="file" id="jd_Upload" class="form-control " (change)="onFileSelected($event)">
+          </div>
+
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+            <label for="key_skills" class="labelHeight">Key Skills </label>
+            <textarea type="input" id="key_skills" formControlName="key_skills" class="form-control "></textarea>
+
+          </div>
+          <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 ">
+
+          </div>
+          <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3 ">
+            <button class="button" mat-button [disabled]="!newJobForm.valid || fileData===false">Submit</button>
+          </div>
+          <div>
+          </div>
+        </div>
+      </form>
+    </div>

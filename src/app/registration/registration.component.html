@@ -1,0 +1,291 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Users</div>
+  <div class="page__content shadow  position-relative ">
+    <div class="page__content-data position-absolute ">
+      <div class="d-flex flex-column">
+        <div class=" mt-4 m-4" style="align-self: flex-start;">
+          <button class="button btn btn-secondary " mat-button (click)="navToAddUser()">Add New User</button>
+        </div>
+        <div class="card m-4 p-1 shadow-4 " style="border-radius:5px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+          <ng-container *ngIf="details.length>0">
+            <p-table responsiveLayout="scroll" #dt1 [value]="details" [paginator]="true" [rows]="5"
+              scrollDirection="both" [showCurrentPageReport]="true"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+              [rowsPerPageOptions]="[5,10,15]" [globalFilterFields]="['username','first_name','last_name','email']">
+              <ng-template pTemplate="caption">
+                <div class="flex">
+                  <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"
+                    style="margin:4px;"></button>
+                  <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="filterValue(dt1,$event)" placeholder="Search keyword"
+                      style="margin:4px; align-self:right;" id="searchText" />
+                  </span>
+                </div>
+              </ng-template>
+
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width:200px">
+                    <div class="flex justify-content-between align-items-center">
+                      Username
+                    </div>
+                  </th>
+                  <th style="width:150px">
+                    <div class="flex justify-content-between align-items-center">
+                      First Name
+                    </div>
+                  </th>
+                  <th style="width:150px">
+                    <div class="flex justify-content-between align-items-center" style="width:200px">
+                      Last Name
+                    </div>
+                  </th>
+                  <th style="width:200px">
+                    <div class="flex justify-content-between align-items-center" style="width:200px">
+                      Mail Id
+                    </div>
+                  </th>
+                  <th style="width:120px">
+                    <div class="flex justify-content-between align-items-center">
+                      Account Type
+                    </div>
+                  </th>
+                  <th style="width:50px">
+                    <div class="flex justify-content-between align-items-center ">
+                      Edit
+                    </div>
+                  </th>
+                  <th style="width:50px">
+                    <div class="flex justify-content-between align-items-center ">
+                      Delete
+                    </div>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-details>
+                <tr>
+                  <td>
+                    {{details.username}}
+                  </td>
+                  <td>
+                    {{details.first_name}}
+                  </td>
+                  <td>
+                    {{details.last_name}}
+                  </td>
+                  <td style="width:600px">
+                    {{details.email}}
+                  </td>
+                  <td *ngIf="details.is_superuser==true">
+                    Admin
+                  </td>
+                  <td *ngIf="details.is_superuser==false">
+                    User
+                  </td>
+                  <td>
+                    <a style="color:blue; cursor: pointer; " class="hovering"
+                      (click)="EditUser(details.id)"><mat-icon>edit</mat-icon></a>
+                  </td>
+                  <td>
+                    <div *ngIf="details.is_superuser==false">
+                      <a style="color: #f01e2c; cursor: pointer; " class="hovering"
+                        (click)="deletedUser(details.id)"><mat-icon>delete</mat-icon></a>
+                    </div>
+                    <div *ngIf="details.is_superuser!=false" disabled style="cursor:not-allowed">
+                      <mat-icon>delete</mat-icon>
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Add User  -->
+<div *ngIf="showForm" class="formwrapper">
+  <div class="profileForm ">
+    <h2 class="text-center text-info">Add New User</h2>
+    <div style="color:red" class="text-left">
+      <p>Note : Password must contain min 8 Characters with atleast <br> 1 lowercase, 1 uppercase, 1 number and 1
+        special Character.
+      </p>
+    </div>
+    <form [formGroup]="addUserForm">
+      <div class="container-fluid d-flex flex-row flex-wrap justify-content-center align-items-center">
+
+        <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 form-group">
+          <label for="username" class="labelHeight">User Name <span class="highlight">*</span> </label>
+          <input type="text" id="username" formControlName="username" class="form-control" required>
+          <div *ngIf="addUserForm.controls['username'].invalid && (addUserForm.controls['username'].touched)"
+            class="alert text-danger1">
+            <div *ngIf="addUserForm.controls['username'].errors?.['required']">
+              This Field is required.
+            </div>
+            <div *ngIf="addUserForm.controls['username'].errors?.['minlength']">
+              Min 6 Characters long.
+            </div>
+            <div *ngIf="addUserForm.controls['username'].errors?.['maxlength']">
+              Max 16 Characters long.
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 form-group">
+          <label for="first_name" class="labelHeight">First Name<span class="highlight">*</span></label>
+          <input type="text" id="first_name" formControlName="first_name" class="form-control" required>
+          <div *ngIf="addUserForm.controls['first_name'].invalid && (addUserForm.controls['first_name'].touched)"
+            class="alert text-danger1">
+            <div *ngIf="addUserForm.controls['first_name'].errors?.['required']">
+              This Field is required.
+            </div>
+            <div *ngIf="addUserForm.controls['first_name'].errors?.['maxlength']">
+              Max 24 Characters long.
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 form-group">
+          <label for="last_name" class="labelHeight">Last Name <span class="highlight">*</span></label>
+          <input type="text" id="last_name" formControlName="last_name" class="form-control" required>
+          <div *ngIf="addUserForm.controls['last_name'].invalid && (addUserForm.controls['last_name'].touched)"
+            class="alert text-danger1">
+            <div *ngIf="addUserForm.controls['last_name'].errors?.['required']">
+              This Field is required.
+            </div>
+            <div *ngIf="addUserForm.controls['last_name'].errors?.['maxlength']">
+              Max 24 Characters long.
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 form-group">
+          <label for="email" class="labelHeight">Mail Id<span class="highlight">*</span></label>
+          <input type="text" id="email" formControlName="email" class="form-control" required>
+          <div *ngIf="addUserForm.controls['email'].invalid && (addUserForm.controls['email'].touched)"
+            class="alert text-danger1">
+            <div *ngIf="addUserForm.controls['email'].errors?.['required']">
+              This Field is required.
+            </div>
+            <div *ngIf="addUserForm.controls['email'].errors?.['email']">
+              Invalid Email </div>
+
+
+          </div>
+        </div>
+
+        <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 form-group">
+          <label for="password1" class="labelHeight">Password <span class="highlight">*</span></label>
+          <input type="password" id="password1" formControlName="password1" class="form-control" required>
+
+          <div *ngIf="addUserForm.controls['password1'].invalid && (addUserForm.controls['password1'].touched)"
+            class="alert text-danger1">
+            <div *ngIf="addUserForm.controls['password1'].errors?.['required']">
+              This Field is required.
+            </div>
+
+            <div *ngIf="addUserForm.controls['password1'].errors?.['pattern']">
+              Invalid Password </div>
+            <div *ngIf="addUserForm.controls['password1'].errors?.['maxlength']">
+              Max 16 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 form-group">
+          <label for="password2" class="labelHeight">Confirm Password <span class="highlight">*</span> </label>
+          <input type="password" id="password2" formControlName="password2" class="form-control" required>
+          <div *ngIf="addUserForm.controls['password2'].invalid && (addUserForm.controls['password2'].touched)"
+            class="alert text-danger1">
+            <div *ngIf="addUserForm.controls['password2'].errors?.['required']">
+              This Field is required.
+            </div>
+            <div *ngIf="addUserForm.controls['password2'].errors?.CustomValidators">Passsword and
+              Confirm Password didn't match. </div>
+          </div>
+
+
+        </div>
+
+        <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+          <button class="button1" mat-button (click)="navToProfile()">Back</button>
+        </div>
+        <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+          <button class="button1" mat-button (click)="navToaddJobForm()"
+            [disabled]="!addUserForm.valid">Confirm</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Edit User  -->
+<div *ngIf="editForm" class="formwrapper1">
+  <div class="profileForm1 ">
+    <h2 class="text-center text-info">Edit User Details</h2>
+    <form>
+      <div class="container-fluid d-flex flex-column flex-wrap justify-content-center align-items-center">
+
+        <div class="col-12 ">
+          <label for="username" class="labelHeight">User Name <span class="highlight">*</span> </label>
+          <input type="text" id="username" class="form-control" value="{{userDetails.username}}"
+            (blur)="captureInput($event)">
+        </div>
+
+        <div class="col-12 ">
+          <label for="first_name" class="labelHeight">First Name<span class="highlight">*</span></label>
+          <input type="text" id="first_name" class="form-control" value="{{userDetails.first_name}}"
+            (blur)="captureInput($event)">
+
+        </div>
+
+        <div class="col-12  form-group">
+          <label for="last_name" class="labelHeight">Last Name <span class="highlight">*</span></label>
+          <input type="text" id="last_name" class="form-control" value="{{userDetails.last_name}}"
+            (blur)="captureInput($event)">
+
+        </div>
+
+        <div class="col-12 form-group">
+          <label for="email" class="labelHeight">Mail Id<span class="highlight">*</span></label>
+          <input type="text" id="email" class="form-control" value="{{userDetails.email}}"
+            (blur)="captureInput($event)">
+
+        </div>
+
+      </div>
+    </form>
+    <div class="col-12 d-flex align-items-center justify-content-center mt-4" style="align-self:center">
+      <div>
+        <button class="button2 m-2" mat-button (click)="navToUserDashboard()">Back</button>
+      </div>
+      <div>
+        <button class="button2 m-2" mat-button (click)="navToEditUser(userDetails.id)">Update User</button>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- Delete User -->
+<div *ngIf="cancelDialog" class="formwrapper2 d-flex justify-content-center align-items-center">
+  <div class="profileForm2 ">
+    <h1 mat-dialog-title style="font-size:44px; color:#f01e2c" class="text-center">ⓘ</h1>
+    <h2 mat-dialog-content class="text-center" style="font-weight:400">
+      Are you sure you want to Delete this User ?</h2>
+
+    <div class="text-center">
+      <button (click)="navtoDashboard()" class="btn btn-primary" style="margin:4px; ">Cancel</button>
+      <button class="btn btn-danger" style="margin:4px; " (click)="navToCancel(this.userId)">Confirm</button>
+    </div>
+  </div>
+</div>

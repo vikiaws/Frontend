@@ -1,0 +1,97 @@
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+    &__box {
+      min-height: 120px;
+      background: #1e293b;
+      margin: 0 -1rem;
+      font-size: 36px;
+    }
+    &__content {
+      min-height: calc(100vh - 178px);
+      border-radius: 10px;
+      margin-top: -2rem;
+      background: white;
+      color: #1e293b;
+      overflow-x:scroll;
+      overflow-y: scroll;
+     
+    }
+    
+  }
+  tr{
+    border-bottom: 0.4px solid gray;
+  }
+  th{
+    margin-bottom:7px;
+  }
+  table{
+    border-width:0px;
+  }
+  .hovering{
+     cursor: pointer;
+ 
+  }
+  .Fulfilled{
+   color:#F8DC0B;
+  }
+  .open{
+    color:#76BA1B;
+  }
+  .closed{
+    color:#FF0800;
+  }
+  .onhold{
+    color:#A92159;
+  }
+  .profile_Shared{
+    color:#797EF6;
+  }
+  .poc_Contacted{
+    color:#A34E24;
+  }
+  .pending{
+    color:#B6B6B6;
+  }
+  .awaiting{
+    color:#293E6A;
+  }
+
+  
+
+  .formwrapper1{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    height:100%;
+    width:100%;
+    position: fixed;
+    top:0;
+    left:0;
+    background-color: rgba(0,0,0,0.5);
+    z-index:3;
+  
+  }
+  .profileForm1{
+    background-color: white;
+    width:50%;
+    padding:20px 50px;
+    border-radius:5px;
+    height:30%;
+    
+  }
+  .hyper{
+    text-align: center;
+  }
+	
+  :host ::ng-deep {
+    .p-datatable .p-datatable-thead > tr > th {
+    padding: 1rem 0.5rem !important;
+    
+}
+.p-datatable .p-datatable-tbody > tr > td{
+    padding: 1rem 0.5rem !important;
+    font-size:14px;
+}
+}  

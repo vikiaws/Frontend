@@ -1,0 +1,83 @@
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+    &__box {
+      min-height: 120px;
+      background: #1e293b;
+      margin: 0 -1rem;
+      font-size: 36px;
+    }
+    &__content {
+      min-height: calc(100vh - 178px);
+      border-radius: 10px;
+      margin-top: -2rem;
+      background: white;
+      color: black;
+      font-size: 2rem;
+      
+      &-data {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+       width:100%;
+        border-radius:10px;
+        height: 100%;
+      }
+    }
+  }
+  .box{
+    background-color: white;
+    border-radius:10px;
+  
+    margin:2rem;
+    padding:1rem;
+  }
+  .footerBox{
+    height:18vh;
+    width:100%;
+    background-color: #384c6e;
+
+  }
+  .highlight{
+    color:red;
+  }
+  .defaultText{
+    font-size:16px;
+  }
+  .commentsSize{
+    width:20vw
+  }
+  .sendButton{
+    width:8rem;
+    margin-top:2rem;
+  }
+  .text1{
+    font-size:18px;
+    text-align: center;
+    color:white; 
+    font-family: cursive; 
+    text-decoration: underline;
+  }
+  .text2{
+    font-size:15px;
+    text-align: center;
+    color:white;
+    font-family: cursive;
+  }
+  .text3{
+    padding:4px;
+  }
+  button:disabled,
+  button[disabled]{
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
+  .text-danger1 {
+    font-size:12px;
+    position: absolute;
+    color:#FF0000;
+    display: inline-flex;
+  }

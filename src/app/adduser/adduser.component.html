@@ -1,0 +1,477 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">Profile Information</div>
+    <div class="page__content shadow p-3 position-relative">
+        <div class="page__content-data position-absolute">
+            <!---------- The Below Content Used for Display the Beeline Information---- -->
+            <form *ngIf="orderStatus">
+                <div class="container-fluid d-flex flex-row flex-wrap justify-content-center align-items-center ">
+                    <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3 flex flex-column">
+                        <label for="beeLine_Request_Number" class="labelHeight">BeeLine Request Number </label>
+                        <input type="text" id="beeLine_Request_Number" class="form-control showContent" maxlength="15"
+                            readonly value="{{orderStatus.beeLine_Request_Number}}">
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="job_description" class="labelHeight">Job Description </label>
+                        <input type="text" id="job_description" class="form-control showContent" readonly
+                            value="{{orderStatus.job_description}}">
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="department" class="labelHeight">Department</label>
+                        <input type="text" id="department" class="form-control showContent" readonly
+                            value="{{orderStatus.department}}">
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="no_of_positions" class="labelHeight">No of positions </label>
+                        <input type="number" id="no_of_positions" class="form-control showContent" readonly
+                            value="{{orderStatus.no_of_positions}}">
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="priority" class="labelHeight">Priority </label>
+                        <input type="text" id="priority" class="form-control showContent" readonly
+                            value="{{orderStatus.priority}}">
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="cv_DeadLine" class="labelHeight">CV Deadline </label>
+                        <input type="input" id="cv_DeadLine" class="form-control showContent" readonly
+                            value="{{orderStatus.cv_DeadLine}}">
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="billing_Rate" class="labelHeight">Billing rate range(Per hour) </label>
+                        <input type="text" id="billing_Rate" class="form-control showContent" readonly
+                            value="{{orderStatus.billing_Rate}}">
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="hours_per_week" class="labelHeight">Hours per week </label>
+                        <input type="number" id="hours_per_week" class="form-control showContent" readonly
+                            value="{{orderStatus.hours_per_week}}">
+                    </div>
+                    <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="contact_person" class="labelHeight">Contact Person TAC </label>
+                        <input type="text" id="contact_person" class="form-control showContent" readonly
+                            value="{{orderStatus.contact_person}}">
+                    </div>
+
+                    <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="status" class="labelHeight">Beeline Status</label>
+                        <input type="text" id="status" class="form-control showContent" readonly
+                            value="{{orderStatus.status}}">
+                    </div>
+
+                    <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="prodapt_practice" class="labelHeight">Prodapt Practice <span
+                                style="color:red">*</span></label>
+                        <input type="text" id="date_request" class="form-control showContent" readonly
+                            value="{{orderStatus.prodapt_practice}}">
+
+
+
+                    </div>
+                    <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="prodapt_POC" class="labelHeight">Prodapt POC<span style="color:red">*</span></label>
+                        <input type="text" id="date_request" class="form-control showContent" readonly
+                            value="{{orderStatus.prodapt_POC}}">
+                    </div>
+                    <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="dutch_Language" class="labelHeight">Dutch Language <span
+                                style="color:red">*</span></label>
+                        <input type="text" id="date_request" class="form-control showContent" readonly
+                            value="{{orderStatus.dutch_Language}}">
+                    </div>
+                    <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="location" class="labelHeight">Location <span style="color:red">*</span></label>
+                        <input type="text" id="date_request" class="form-control showContent" readonly
+                            value="{{orderStatus.location}}">
+                    </div>
+
+
+                    <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="key_skills" class="labelHeight">Key Skills </label>
+                        <textarea type="input" id="key_skills" value="{{orderStatus.key_skills}}"
+                            class="form-control showContent "></textarea>
+                    </div>
+                    <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                        <label for="date_request" class="labelHeight">Date of request </label>
+                        <input type="text" id="date_request" class="form-control showContent" readonly
+                            value="{{orderStatus.date_request}}">
+                    </div>
+                    <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 " *ngIf="orderStatus.file!=default">
+                        <label for="cv_Attachment" class="labelHeight">Detailed Job Description</label>
+                        <div class="anchor2">
+                            <a href="{{orderStatus.file}}" target="_blank"
+                                style="color:white; text-decoration: none !important;">View Here &nbsp; <i
+                                    class="fa fa-file-pdf-o fa-1x" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 ">
+
+                    </div>
+                </div>
+                <!----------------- Beeline Information Ends Here ---------------------------->
+
+                <!----------- Profiles Under the Beeline in Accordation Tabs Sarts  ---------->
+
+                <cdk-accordion class="example-accordion  justify-content-center align-items-center">
+                    <cdk-accordion-item *ngFor="let item of orderStatus.beeline; let index = index;"
+                        #accordionItem="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
+                        [attr.id]="'accordion-header-' + index" [attr.aria-expanded]="accordionItem.expanded"
+                        [attr.aria-controls]="'accordion-body-' + index">
+                        <div style="font-weight:500;font-size:17px;" class="example-accordion-item-header"
+                            (click)="accordionItem.toggle()" *ngIf="item.cv_Attachment!=default" [ngClass]="{
+                                              'open' : item.current_Status===open,
+                                              'closed' : item.current_Status===closed,
+                                              'onhold' : item.current_Status===onhold,
+                                              'profile_Rejected' : item.current_Status===rejected,
+                                              'profile_Shared' : item.current_Status===profile_Shared,
+                                              'poc_Contacted' : item.current_Status===poc_Contacted,
+                                              'pending' : item.current_Status===pending,
+                                              'awaiting' : item.current_Status===awaiting
+                                            }">
+                            {{item.name_of_candidate}} |Current Status: {{item.current_Status}} | Resume Shared:Yes
+                            <span class="example-accordion-item-description">
+                                Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+                            </span>
+                        </div>
+
+                        <!-------- Accordation Header --------->
+
+                        <div style="font-weight:500;font-size:17px;" class="example-accordion-item-header"
+                            (click)="accordionItem.toggle()" [ngClass]="{
+                            'open' : item.current_Status===open,
+                            'closed' : item.current_Status===closed,
+                            'onhold' : item.current_Status===onhold,
+                            'profile_Rejected' : item.current_Status===rejected,
+                            'profile_Shared' : item.current_Status===profile_Shared,
+                            'poc_Contacted' : item.current_Status===poc_Contacted,
+                            'pending' : item.current_Status===pending,
+                            'awaiting' : item.current_Status===awaiting
+                           }" *ngIf="item.cv_Attachment==default">
+                            {{item.name_of_candidate}} |Current Status: {{item.current_Status}} | Resume Shared:No
+                            <span class="example-accordion-item-description">
+                                Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+                            </span>
+                        </div>
+
+                        <!---------- Accordation Body ---------->
+
+                        <div class="example-accordion-item-body  " role="region"
+                            [style.display]="accordionItem.expanded ? '' : 'none'" [attr.id]="'accordion-body-' + index"
+                            [attr.aria-labelledby]="'accordion-header-' + index">
+                            <div class=" d-flex flex-row flex-wrap justify-content-center align-items-center">
+                                <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3 flex flex-column">
+                                    <label for="beeLine_Request_Number" class="labelHeight">Name Of the Candidate
+                                    </label>
+                                    <input type="text" id="beeLine_Request_Number" class="form-control showContent"
+                                        readonly value="{{item.name_of_candidate}}">
+                                </div>
+
+                                <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+                                    <label for="priority" class="labelHeight">Profile Status </label>
+                                    <input type="text" id="priority" class="form-control showContent" readonly
+                                        value="{{item.current_Status}}">
+                                </div>
+                                <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+                                    <label for="cv_DeadLine" class="labelHeight">Location </label>
+                                    <input type="input" id="cv_DeadLine" class="form-control showContent" readonly
+                                        value="{{item.location_relocation}}">
+                                </div>
+                                <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3"
+                                    *ngIf="item.cv_Attachment!=default">
+                                    <label for="billing_Rate" class="labelHeight">Resume Shared </label>
+                                    <input type="text" id="billing_Rate" class="form-control showContent" readonly
+                                        value="Yes">
+                                </div>
+                                <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3"
+                                    *ngIf="item.cv_Attachment==default">
+                                    <label for="billing_Rate" class="labelHeight">Resume Shared </label>
+                                    <input type="text" id="billing_Rate" class="form-control showContent" readonly
+                                        value="No">
+                                </div>
+                                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                                    <label for="client_Interview" class="labelHeight">Client Interview</label>
+                                    <input type="select" id="client_Interview" class="form-control showContent" readonly
+                                        value="{{item.client_Interview}}">
+                                </div>
+                                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                                    <label for="contact_person" class="labelHeight">Next Step </label>
+                                    <input type="text" id="contact_person" class="form-control showContent" readonly
+                                        value="{{item.next_step}}">
+                                </div>
+                                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                                    <label for="date_request" class="labelHeight">Comments </label>
+                                    <textarea type="text" id="date_request" class="form-control showContent"
+                                        value="{{item.comments}}"></textarea>
+
+                                </div>
+                                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 "
+                                    *ngIf="item.cv_Attachment!=default">
+                                    <label for="cv_Attachment" class="labelHeight">CV Attached </label>
+                                    <div class="anchor2">
+                                        <a href="{{item.cv_Attachment}}" target="_blank" rel="noopener"
+                                            class="fileAttachment">View
+                                            Here &nbsp; <i class="fa fa-file-pdf-o fa-1x" aria-hidden="true"></i> </a>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3"
+                                    *ngIf="item.cv_Attachment==default">
+                                </div>
+                                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+
+                                </div>
+                                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                                    <button class="button" mat-button (click)="editJob(item.id)">Edit</button>
+                                </div>
+                                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                                    <button class="button" mat-button (click)="cancelJob(item.id)">Delete</button>
+                                </div>
+                                <div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!------------Cancel Profile Confirmation-------------->
+
+                        <div *ngIf="cancelDialog" class="formwrapper1 d-flex justify-content-center align-items-center">
+                            <div class="profileForm2 ">
+                                <h1 mat-dialog-title class="text-center confirmDialog">ⓘ</h1>
+                                <h2 mat-dialog-content class="text-center" style="font-weight:400">
+                                    Are you sure you want to Delete this Profile ?
+                                </h2>
+                                <div class="text-center">
+                                    <button (click)="onClose()" class="btn btn-primary"
+                                        style="margin:4px; ">Cancel</button>
+                                    <button class="btn btn-danger" style="margin:4px; "
+                                        (click)="cancelProfile(item.id)">Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </cdk-accordion-item>
+                </cdk-accordion>
+                <div class="d-flex flex-row align-items-center justify-content-center">
+                    <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3 ml-3">
+                        <button class="btn navtoHome p-2" mat-button (click)="navToHome()">Back to Dashboard</button>
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+                        <button class="btn navtoAddProfile p-2" mat-button (click)="addUser()">Add a new
+                            Profile</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!---------------------------Profile Information Content Ends Here------------------------------>
+
+<!--------------------------Adding New Profile Under Beeline Form------------------------------->
+
+
+<div *ngIf="showForm" class="formwrapper container-fluid">
+    <div class="profileForm ">
+        <h2 class="text-center ">Add Profile</h2>
+        <h2 class=" text-center text-info"> Under the Beeline Request {{orderStatus.beeLine_Request_Number}}</h2>
+        <form [formGroup]="addJobForm">
+            <div class="container-fluid d-flex flex-row flex-wrap justify-content-center align-items-center">
+
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 form-group">
+                    <label for="name_of_candidate" class="labelHeight">Name of proposed candidate <span
+                            class="highlight">*</span> </label>
+                    <input type="text" id="Name_of_candidate" formControlName="name_of_candidate" class="form-control"
+                        required>
+                    <div *ngIf="addJobForm.controls['name_of_candidate'].invalid && (addJobForm.controls['name_of_candidate'].touched)"
+                        class="alert text-danger1">
+                        <div *ngIf="addJobForm.controls['name_of_candidate'].errors?.['required']">
+                            This Field is required.
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3 form-group">
+                    <label for="current_Status" class="labelHeight">Current Status <span
+                            class="highlight">*</span></label>
+                    <select id="current_Status" formControlName="current_Status" name="current_Status"
+                        class="form-control form-select">
+                        <option *ngFor="let each of CurrentList" value={{each}}>{{each}}</option>
+                    </select>
+                    <div *ngIf="addJobForm.controls['current_Status'].invalid && (addJobForm.controls['current_Status'].touched)"
+                        class="alert text-danger1 ">
+                        <div *ngIf="addJobForm.controls['current_Status'].errors?.['required']">
+                            This Field is required.
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 form-group">
+                    <label for="location_relocation" class="labelHeight">Location<span
+                            class="highlight">*</span></label>
+                    <input type="text" id="location_relocation" formControlName="location_relocation"
+                        class="form-control" required>
+                    <div *ngIf="addJobForm.controls['location_relocation'].invalid && (addJobForm.controls['location_relocation'].touched)"
+                        class="alert text-danger1">
+                        <div *ngIf="addJobForm.controls['location_relocation'].errors?.['required']">
+                            This Field is required.
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 form-group">
+                    <label for="client_Interview" class="labelHeight">Client Interview <span
+                            class="highlight">*</span></label>
+                    <select id="client_Interview" formControlName="client_Interview" name="client_Interview"
+                        class="form-control form-select">
+                        <option *ngFor="let each of dutchList" value={{each}}>{{each}}</option>
+                    </select>
+                    <div *ngIf="addJobForm.controls['client_Interview'].invalid && (addJobForm.controls['client_Interview'].touched)"
+                        class="alert text-danger1 ">
+                        <div *ngIf="addJobForm.controls['client_Interview'].errors?.['required']">
+                            This Field is required.
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 form-group">
+                    <label for="next_step" class="labelHeight">Next Step <span class="highlight">*</span></label>
+                    <input type="text" id="next_step" formControlName="next_step" class="form-control" required>
+                    <div *ngIf="addJobForm.controls['next_step'].invalid && (addJobForm.controls['next_step'].touched)"
+                        class="alert text-danger1">
+                        <div *ngIf="addJobForm.controls['next_step'].errors?.['required']">
+                            This Field is required.
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 form-group">
+                    <label for="cv_Attachment" class="labelHeight">CV Upload</label>
+                    <input type="file" id="cv_Attachment" class="form-control " (change)="onFileSelected($event)">
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 form-group">
+                    <label for="comments" class="labelHeight">Comments </label>
+                    <textarea type="input" id="comments" formControlName="comments" class="form-control "></textarea>
+
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                    <button class="button" mat-button (click)="navToProfile()">Back</button>
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                    <button class="button" mat-button (click)="navToaddJobForm()"
+                        [disabled]="!addJobForm.valid">Confirm</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-------------------------Adding New Profile Form Ends Here ----------------------------------->
+
+
+<!---------------------------Editing Profile Form Starts Here ---------------------------------->
+
+<div *ngIf="editForm" class="formwrapper">
+    <div class="profileForm ">
+        <h2 class="text-center ">Edit Profile</h2>
+        <form [formGroup]="addJobForm">
+            <div class="container-fluid d-flex flex-row flex-wrap justify-content-center align-items-center">
+
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                    <label for="name_of_candidate" class="labelHeight">Name of proposed candidate <span
+                            class="highlight">*</span> </label>
+                    <input type="text" id="name_of_candidate" value="{{editUser.name_of_candidate}}"
+                        class="form-control" required (blur)="captureInput($event)">
+                </div>
+
+                <div class="col-12 col-md-3 col-lg-2 col-xl-3 mt-4 m-3">
+                    <label for="current_Status" class="labelHeight">Current Status <span
+                            class="highlight">*</span></label>
+                    <p-dropdown [options]="profileStatus" optionLabel="name" [showClear]="true" autoWidth="false"
+                        [style]="{'width':'100%'}" (onChange)="captureDropdownValue($event,'current_Status','name')"
+                        dataKey="{{editUser.current_Status}}"></p-dropdown>
+                </div>
+
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                    <label for="location_relocation" class="labelHeight">Loaction/Relocation <span
+                            class="highlight">*</span></label>
+                    <input type="text" id="location_relocation" value="{{editUser.location_relocation}}"
+                        class="form-control" (blur)="captureInput($event)" required>
+                </div>
+
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                    <label for="client_Interview" class="labelHeight">Client Interview <span
+                            class="highlight">*</span></label>
+                    <input type="text" id="client_Interview" value="{{editUser.client_Interview}}" class="form-control"
+                        required (blur)="captureInput($event)">
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                    <label for="next_step" class="labelHeight">Next Step <span class="highlight">*</span></label>
+                    <input type="text" id="next_step" value="{{editUser.next_step}}" class="form-control"
+                        (blur)="captureInput($event)" required>
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3" *ngIf="editUser.cv_Attachment!=default">
+                    <div *ngIf="beforeJd">
+                        <label for="file" class="labelHeight">JD Upload</label>
+                        <div class="d-flex flex-row">
+                            <div class="anchor">
+                                <a href="{{editUser.cv_Attachment}}" target="_blank" rel="noopener"
+                                    style="float:center"> View CV</a>
+                            </div>
+                            <div class="anchor1">
+                                <a style="float:center" (click)="changeJD()">Edit CV </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="afterJd">
+                        <label for="file" class="labelHeight">CV Attachment</label>
+                        <input type="file" id="file" class="form-control " (change)="onEditSelected($event)">
+                    </div>
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3 " *ngIf="editUser.cv_Attachment==default">
+                    <label for="file" class="labelHeight">CV Attachment</label>
+                    <input type="file" id="file" class="form-control " (change)="onEditSelected($event)">
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                    <label for="comments" class="labelHeight">Comments <span class="highlight">*</span> </label>
+                    <textarea type="input" style="height:100px; width:200px" id="comments" value="{{editUser.comments}}"
+                        class="form-control" (blur)="captureInput($event)"></textarea>
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                    <button class="button" mat-button (click)="navToEditProfile()">Back</button>
+                </div>
+                <div class="col-12 col-md-3  col-lg-2 col-xl-3 mt-4 m-3">
+                    <button class="button" mat-button (click)="navToEditJobForm(editUser.id)">Confirm</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!----------------------------Editing Profile Form Ends Here------------------------------------->
+
+<!----------------------------------Update Dialog------------------------------------------------>
+<div *ngIf="updateDialog" class="formwrapper1 d-flex justify-content-center align-items-center">
+    <div class="profileForm1 ">
+        <h1 mat-dialog-title style="font-size:44px; color:#f01e2c" class="text-center">ⓘ</h1>
+        <h2 mat-dialog-content class="text-center" style="font-weight:400">
+            Are you sure you want to Update the CV Attachment ?</h2>
+
+        <div class="text-center">
+            <button (click)="onUpdateClose()" class="btn btn-primary" style="margin:4px; ">Cancel</button>
+            <button class="btn btn-danger" style="margin:4px; " (click)="updateJD()">Confirm</button>
+        </div>
+    </div>
+</div>

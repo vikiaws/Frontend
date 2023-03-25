@@ -1,0 +1,19 @@
+<mat-toolbar *ngIf="(username==='Admin')||(username==='User')">
+  <mat-toolbar-row class="justify-content-between">
+    <button class="button1" mat-icon-button (click)="toggleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="row mr-2 ml-auto">
+      <div class="d-flex align-items-center justify-content-center">
+        <img src="../assets/logo.png" alt="" style="height:50px; width:100px">
+        <div class="d-flex flex-row justify-content-center align-items-center text-center ">
+          <button class="btn btn-secondary  button3" title="{{user1}}" >{{user2[0]}} </button><mat-icon [mat-menu-trigger-for]="menu">more_vert</mat-icon>
+          <mat-menu #menu="matMenu"  class=" d-flex justiy-content-center align-items-center">
+            <button (click)="logOut()" class="btn text-center justiy-content-center align-items-center" mat-menu-item style="width:7rem"><mat-icon style="margin-right:0 !important; margin-left:0 !important;">power_settings_new</mat-icon> Logout</button>
+          </mat-menu>
+        </div>
+      </div>
+     
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

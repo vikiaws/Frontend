@@ -1,0 +1,275 @@
+.page {
+  color: white;
+  padding: 0 1rem;
+  background: #f1f5f9;
+  &__box {
+    min-height: 120px;
+    background: #1e293b;
+    margin: 0 -1rem;
+    font-size: 36px;
+  }
+  &__content {
+    min-height: calc(100vh - 178px);
+    border-radius: 10px;
+    margin-top: -2rem;
+    background: white;
+    color: #1e293b;
+    overflow: scroll;
+   
+  }
+}
+.onhold{
+  color:#F8DC0B;
+ }
+ .open{
+   color:#76BA1B;
+ }
+ .closed{
+   color:#FF0800;
+ }
+ .profile_Rejected{
+   color:#A92159;
+ }
+ .profile_Shared{
+   color:#797EF6;
+ }
+ .poc_Contacted{
+   color:#A34E24;
+ }
+ .pending{
+   color:#B6B6B6;
+ }
+ .awaiting{
+   color:#293E6A;
+ }
+.button {
+  background-color:#2c3344;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  width:100%;
+  cursor: pointer;
+  border-width:0.15px;
+  border-radius:8px;
+  border-color: #cccccc;
+  box-shadow: 5px 8px inherit;
+}
+.button1 {
+  background-color:#f01e2c;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  width:100%;
+  cursor: pointer;
+  border-width:0.15px;
+  border-radius:8px;
+  border-color: #cccccc;
+  box-shadow: 5px 8px inherit;
+}
+.labelHeight{
+  height:38px;
+  display: inline-flex;
+  align-items: flex-end;
+}
+.formwrapper{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  height:100%;
+  width:100%;
+  position: absolute;
+  top:0;
+  left:0;
+  background-color: rgba(0,0,0,0.5);
+ 
+
+}
+.formwrapper1{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  height:100%;
+  width:100%;
+  position: fixed;
+  top:0;
+  left:0;
+  background-color: rgba(0,0,0,0.5);
+ 
+
+}
+.profileForm{
+  background-color: white;
+  width:75%;
+  padding:20px 50px;
+  border-radius:5px;
+  height:80%;
+  overflow: scroll;
+}
+.profileForm1{
+  background-color: white;
+  width:75%;
+  padding:20px 50px;
+  border-radius:5px;
+  height:30%;
+  
+}
+.profileForm2{
+  background-color: white;
+  width:60%;
+  padding:20px 50px;
+  border-radius:5px;
+  height:30%;
+  
+}
+.grouping{
+  display: flex;
+  margin:15px 0;
+}
+
+
+.example-accordion {
+  display: block;
+  max-width: 95%;
+  margin:30px;
+
+}
+
+.example-accordion-item {
+  display: block;
+  border: solid 1px #ccc;
+  margin:0.25rem
+}
+
+.example-accordion-item + .example-accordion-item {
+  border-top: none;
+}
+
+.example-accordion-item-header {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+ 
+}
+
+.example-accordion-item-description {
+  font-size: 0.85em;
+  color: #999;
+}
+
+.example-accordion-item-header,
+.example-accordion-item-body {
+  padding: 16px;
+}
+
+.example-accordion-item-header:hover {
+  cursor: pointer;
+  background-color: #eee;
+}
+
+.example-accordion-item:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.example-accordion-item:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.anchor2{
+  width:7rem;
+  height:2.3rem;
+  background-color:#035efc;
+  padding:0.4rem;
+  margin:0.5rem;
+  color:white !important;
+  text-align: center;
+  border-radius: 8px;
+  border-width:0px;
+  text-decoration: none;
+}
+.anchor{
+  width:14rem;
+  height:2.3rem;
+  background-color:#b1f2ff;
+  padding:0.4rem;
+  margin:0.5rem;
+  text-align: center;
+  border-radius: 8px;
+  border-width:4px;
+  text-decoration: none;
+  border-color: #2c3344;
+}
+.anchor1{
+  width:14rem;
+  height:2.3rem;
+  background-color:#ececec;
+  padding:0.4rem;
+  margin:0.5rem;
+  text-align: center;
+  border-radius: 8px;
+  border-width:4px;
+  text-decoration: none;
+  border-color: #2c3344;
+}
+.anchor1:hover{
+  background-color:#dedede;
+  cursor: pointer;
+  text-decoration: underline;
+
+
+}
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+.showContent{
+  background-color:#DFDFDF;
+  cursor: not-allowed;
+}
+.fileAttachment{
+  color:white; 
+  text-decoration: none !important;
+}
+.confirmDialog{
+  font-size:44px; 
+  color:#f01e2c;
+}
+.navtoHome{
+  background-color:#00838f;
+   color:white;
+   width:12rem;
+}
+.navtoAddProfile{
+  background-color:#74b72e;
+   color:white;
+   width:12rem;
+
+}
+.highlight{
+  color:red;
+}
+.commentsSection{
+  height:100px;
+   width:150px
+}
+.form-group {
+  position: relative;
+}
+
+.text-danger1 {
+  position: absolute;
+  height:38px;
+  color:#FF0000;
+  display: inline-flex;
+}

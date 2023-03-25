@@ -1,0 +1,89 @@
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+    &__box {
+      min-height: 120px;
+      background: #1e293b;
+      margin: 0 -1rem;
+      font-size: 36px;
+    }
+    &__content {
+      min-height: calc(100vh );
+      margin-top: -2rem;
+      background: white;
+      color: black;
+      font-size: 2rem;
+      
+      &-data {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-image: url("/assets/login.jpg");
+      background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover; width:100%;
+        height: 100%;
+      }
+    }
+  }
+.box{
+    background-color: white;
+    border-radius:10px;
+    width:30vw;
+    height:40vh;
+    margin:2rem;
+    padding:1rem;
+  }
+  .footerBox{
+    height:18vh;
+    width:100%;
+    background-color: #384c6e;
+
+  }
+  .highlight{
+    color:red;
+  }
+  .defaultText{
+    font-size:16px;
+  }
+  .commentsSize{
+    width:20vw
+  }
+  .sendButton{
+    width:14rem;
+    margin-top:2rem;
+    
+  }
+  .text1{
+    font-size:18px;
+    text-align: center;
+    color:white; 
+    font-family: cursive; 
+    text-decoration: underline;
+  }
+  .text2{
+    font-size:15px;
+    text-align: center;
+    color:white;
+    font-family: cursive;
+  }
+  .text3{
+    padding:4px;
+  }
+    mat-drawer {
+    width: 260px;
+  }
+  mat-drawer-container {
+    height: 100%;
+  }
+  
+  mat-drawer {
+    background: #0f172a;
+  }
+  .open{
+    display: none;
+  }
+  .closed{
+    display: none;
+  }
